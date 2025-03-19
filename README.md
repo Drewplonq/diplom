@@ -39,3 +39,16 @@ terraform apply destroy -auto-approve отрабатывают
 
 ### Создание тестового приложения
 
+Отдельный репозиторий с nginx и dockerfile
+
+https://github.com/Drewplonq/graduateapp
+
+
+образ собран и  запушен в докерхаб
+
+https://hub.docker.com/repository/docker/plonqnet/graduateapp/general
+
+![alt text](img/image-9.png)
+
+
+### Подготовка cистемы мониторинга и деплой приложения
