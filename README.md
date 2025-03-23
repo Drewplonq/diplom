@@ -63,7 +63,7 @@ https://github.com/Drewplonq/diplom/tree/main/k8sapps/prometheus
 
 ![alt text](img/image-12.png)
 
-Система мониторинга в работе
+### Система мониторинга в работе
 
 ![alt text](img/image-13.png)
 
