@@ -52,3 +52,29 @@ https://hub.docker.com/repository/docker/plonqnet/graduateapp/general
 
 
 ### Подготовка cистемы мониторинга и деплой приложения
+
+для системы мониторинга использован хелм и  kube-prometheus
+
+https://github.com/Drewplonq/diplom/tree/main/k8sapps/prometheus
+
+![alt text](img/image-10.png)
+
+![alt text](img/image-11.png)
+
+![alt text](img/image-12.png)
+
+Система мониторинга в работе
+
+![alt text](img/image-13.png)
+
+![alt text](img/image-14.png)
+
+![alt text](img/image-15.png)
+
+
+### Докер приложение
+
+![alt text](img/image-16.png)
+
+![alt text](img/image-17.png)
+

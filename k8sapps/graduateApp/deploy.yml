@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: graduateapp
+  namespace: graduateapp
+  labels:
+    app: graduateapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: graduateapp
+  template:
+    metadata:
+      labels:
+        app: graduateapp
+    spec:
+      containers:
+      - name: graduateapp
+        image: plonqnet/graduateapp:1.0
+        resources:
+          requests:
+            cpu: "1"
+            memory: "200Mi"
+          limits:
+            cpu: "2"
+            memory: "400Mi"
+        ports:
+        - containerPort: 80
