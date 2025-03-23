@@ -1,6 +1,7 @@
-name: 'Terraform '
-
+name: 'YandexCloud'
+# Controls when the workflow will run
 on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch 
   push:
     branches:
       - main
@@ -11,6 +12,7 @@ on:
       - main
     paths:
       - 'terraform/**'
+  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
     inputs:
       destroy:
@@ -21,18 +23,14 @@ on:
         description: 'Set to "true" to apply infrastructure changes'
         required: false
         default: 'false'
-
 jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
-
     env:
       TOKEN: ${{ secrets.YC_TOKEN }}
       CLOUD_ID: ${{ secrets.YC_CLOUD_ID }}
       FOLDER_ID: ${{ secrets.YC_FOLDER_ID }}
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
       TF_VAR_ssh_public_key: ${{ secrets.SSH_PUBLIC_KEY }}
       TF_VAR_ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
       TF_VAR_exclude_ansible: 'true'
@@ -46,8 +44,10 @@ jobs:
       with:
         terraform_version: "1.5.5"
 
-    - name: Terraform Init
-      run: terraform -chdir=./terraform init
+    - name: Initialize Terraform
+      run: |
+          cd ./terraform/
+          terraform init -backend-config="bucket=${{ secrets.BUCKET }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}" -backend-config="access_key=${{ secrets.ACCESS_KEY }}"
 
     - name: Terraform Format and Validate
       run: terraform -chdir=./terraform validate
