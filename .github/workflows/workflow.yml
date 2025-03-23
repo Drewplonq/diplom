@@ -8,7 +8,17 @@ on:
     branches:
       - main
 
-      
+  workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Set to "true" to destroy infrastructure'
+        required: false
+        default: 'false'
+      apply:
+        description: 'Set to "true" to apply infrastructure changes'
+        required: false
+        default: 'false'
+
 env:
   TF_VAR_bucket: ${{ secrets.BUCKET }}
   TF_VAR_access_key: ${{ secrets.ACCESS_KEY }}
