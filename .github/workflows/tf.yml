@@ -1,0 +1,25 @@
+name: 'Terraform CI/CD'
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch 
+  push:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'terraform/**'
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      destroy:
+        description: 'Set to "true" to destroy infrastructure'
+        required: false
+        default: 'false'
+      apply:
+        description: 'Set to "true" to apply infrastructure changes'
+        required: false
+        default: 'false'
