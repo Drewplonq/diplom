@@ -47,7 +47,7 @@ jobs:
         terraform_version: "1.5.5"
 
     - name: Initialize Terraform
-        run: |
+      run: |
           cd ./terraform/
           terraform init -backend-config="bucket=${{ secrets.BUCKET }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}" -backend-config="access_key=${{ secrets.ACCESS_KEY }}"
 
