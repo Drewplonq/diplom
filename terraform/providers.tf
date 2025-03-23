@@ -1,7 +1,8 @@
 provider "yandex" {
   cloud_id  = var.cloud_id
   folder_id = var.folder_id
-  service_account_key_file = "/home/netology/Downloads/authorized_key.json"
+  #service_account_key_file = "/home/netology/Downloads/authorized_key.json"
+  token     = var.token
   zone      = var.zone1
 }
 terraform {
