@@ -46,8 +46,10 @@ jobs:
       with:
         terraform_version: "1.5.5"
 
-    - name: Terraform Init
-      run: terraform -chdir=./terraform init
+    - name: Initialize Terraform
+        run:|
+          cd ./terraform/
+          terraform init -backend-config="bucket=${{ secrets.BUCKET }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}" -backend-config="access_key=${{ secrets.ACCESS_KEY }}"
 
     - name: Terraform Format and Validate
       run: terraform -chdir=./terraform validate
