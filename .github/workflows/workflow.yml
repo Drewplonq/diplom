@@ -99,4 +99,4 @@ jobs:
           if: github.event_name == 'push' && github.ref == 'refs/heads/main'
           run: |
             cd ./terraform/
-            terraform destroy -auto-approve 
+            terraform destroy -auto-approve
