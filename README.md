@@ -81,3 +81,19 @@ https://github.com/Drewplonq/diplom/tree/main/k8sapps/prometheus
 ### Ci/CD при любом коммите
 
 ![alt text](img/image-18.png)
+
+### Установка и настройка CI/CD
+
+Использован GitHub Actions
+
+![alt text](img/image-19.png)
+
+![alt text](img/image-20.png)
+
+![alt text](img/image-21.png)
+
+![alt text](img/image-22.png)
+
+![alt text](img/image-23.png)
+
+![alt text](img/image-24.png)
