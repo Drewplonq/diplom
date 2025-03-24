@@ -77,7 +77,7 @@ variable "exclude_ansible" {
   default     = false
 }
 
-# variable "token" {
-#   type = string
-#   sensitive = true
-# }
+variable "token" {
+  type = string
+  sensitive = true
+}
