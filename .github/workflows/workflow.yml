@@ -23,7 +23,7 @@ jobs:
   Plan-infrastructure:
     runs-on: ubuntu-latest
     env:
-      TOKEN: ${{ secrets.YC_TOKEN }}
+      TF_VAR_TOKEN: ${{ secrets.YC_TOKEN }}
       TF_VAR_bucket: ${{ secrets.BUCKET }}
       TF_VAR_access_key: ${{ secrets.ACCESS_KEY }}
       TF_VAR_secret_key: ${{ secrets.SECRET_KEY }}
