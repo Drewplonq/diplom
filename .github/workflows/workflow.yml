@@ -65,7 +65,8 @@ jobs:
       TF_VAR_folder_id: ${{ secrets.YC_FOLDER_ID }}
       TF_VAR_ssh_key: ${{secrets.SSH_PUBLIC_KEY}}
     needs: Plan-infrastructure
-    if: contains(github.event.head_commit.message, 'startflow')
+
+    #if: contains(github.event.head_commit.message, 'startflow')
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -85,26 +86,34 @@ jobs:
           cd ./terraform/
           terraform apply -auto-approve 
 
-  destroy-infrastructure:
-    needs: Plan-infrastructure
-    runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.message, 'destroy')
-    steps:
-        - name: Checkout code
-          uses: actions/checkout@v2
+  # destroy-infrastructure:
+  #   needs: Plan-infrastructure
+  #   runs-on: ubuntu-latest
+      # env:
+      #   TF_VAR_token: ${{ secrets.TOKEN }}
+      #   TF_VAR_bucket: ${{ secrets.BUCKET }}
+      #   TF_VAR_access_key: ${{ secrets.ACCESS_KEY }}
+      #   TF_VAR_secret_key: ${{ secrets.SECRET_KEY }}
+      #   TF_VAR_cloud_id: ${{ secrets.YC_CLOUD_ID }}
+      #   TF_VAR_folder_id: ${{ secrets.YC_FOLDER_ID }}
+      #   TF_VAR_ssh_key: ${{secrets.SSH_PUBLIC_KEY}}
+  #   #if: contains(github.event.head_commit.message, 'destroy')
+  #   steps:
+  #       - name: Checkout code
+  #         uses: actions/checkout@v2
 
-        - name: Setup Terraform
-          uses: hashicorp/setup-terraform@v1
-          with:
-              terraform_version: '1.8.5'
+  #       - name: Setup Terraform
+  #         uses: hashicorp/setup-terraform@v1
+  #         with:
+  #             terraform_version: '1.8.5'
 
-        - name: Initialize Terraform
-          run: |
-            cd ./terraform/
-            terraform init -backend-config="bucket=${{ secrets.BUCKET }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}" -backend-config="access_key=${{ secrets.ACCESS_KEY }}"
+        # - name: Initialize Terraform
+        #   run: |
+        #     cd ./terraform/
+        #     terraform init -backend-config="bucket=${{ secrets.BUCKET }}" -backend-config="secret_key=${{ secrets.SECRET_KEY }}" -backend-config="access_key=${{ secrets.ACCESS_KEY }}"
 
-        - name: Destroy infrastructure
-          if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-          run: |
-            cd ./terraform/
-            terraform destroy -auto-approve
+        # - name: Destroy infrastructure
+        #   if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        #   run: |
+        #     cd ./terraform/
+        #     terraform destroy -auto-approve

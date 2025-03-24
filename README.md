@@ -77,3 +77,8 @@ https://github.com/Drewplonq/diplom/tree/main/k8sapps/prometheus
 ![alt text](img/image-16.png)
 
 ![alt text](img/image-17.png) 
+
+### 
+
+
+![alt text](img/image-18.png)
